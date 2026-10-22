@@ -2,10 +2,16 @@ class Solution {
 public:
     int singleNonDuplicate(vector<int>& nums) {
         int n=nums.size();
-        int xor1=0;
-        for(int i=0;i<n;i++){
-            xor1=xor1^nums[i];
-        }
-        return xor1;
+       unordered_map<int,int>f;
+
+       for(int x:nums){
+            f[x]++;
+       }
+       for(int x:nums){
+            if(f[x]==1){
+                return x;
+            }
+       }
+       return -1;
     }
 };
